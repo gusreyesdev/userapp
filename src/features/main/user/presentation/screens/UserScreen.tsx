@@ -11,6 +11,9 @@ import {
 
 import { useUser } from "../hooks/useUser";
 
+import { User2Icon, MailIcon } from "lucide-react";
+import { Badge } from "../../../../../components/ui/badge";
+
 export const UserScreen = () => {
   const { state } = useLocation();
 
@@ -40,7 +43,20 @@ export const UserScreen = () => {
           <CardDescription>{data?.lastname}</CardDescription>
         </CardHeader>
         <CardContent>
-          <p>{data?.email}</p>
+          <div className="flex">
+            <User2Icon className="h-4 w-4  self-center" />
+            <p> {data?.username}</p>
+          </div>
+
+          <div className="flex">
+            <MailIcon className="h-4 w-4 self-center" />
+            <p> {data?.email}</p>
+          </div>
+
+          <div>
+          <Badge variant="outline">{data?.gender}</Badge>
+          </div>
+
         </CardContent>
       </Card>
     </div>
