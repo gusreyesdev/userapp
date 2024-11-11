@@ -6,12 +6,14 @@ export interface UserLikeCreate {
   name: string;
   lastname: string;
   username: string;
-  email: string;
   gender: string;
+  image:string;
+  email: string;
+  password: string
 }
 
-export const createUser = async (user: UserLikeCreate) => {
-  const { data } = await userApi.post<User>(`/users`, user);
+export const createUser = async (  user: UserLikeCreate) => {
+  const { data } = await userApi.post<User>(`/auth/register`, user);
 
   return data;
 };

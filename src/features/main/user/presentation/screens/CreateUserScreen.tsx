@@ -27,7 +27,9 @@ const formSchema = z.object({
   name: z.string().min(2).max(20),
   lastname: z.string().min(2).max(20),
   username: z.string().min(2).max(20),
+  image: z.string().url(),
   email: z.string().email(),
+  password: z.string().min(5).max(10),
   gender: z.enum(["male", "female"]),
 });
 
@@ -40,7 +42,9 @@ export const CreateUserScreen = () => {
       name: "",
       lastname: "",
       username: "",
+      image: "",
       email: "",
+      password: "",
     },
   });
 
@@ -54,6 +58,7 @@ export const CreateUserScreen = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     userMutation.mutate(values);
+    form.reset()  
   };
 
   return (
@@ -107,12 +112,40 @@ export const CreateUserScreen = () => {
 
           <FormField
             control={form.control}
+            name="image"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Image</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input type="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

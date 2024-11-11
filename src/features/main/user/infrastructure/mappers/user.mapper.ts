@@ -8,8 +8,10 @@ export class UserMapper {
       name: data.name,
       lastname: data.lastname,
       username: data.username,
-      email: data.email,
       gender: data.gender,
+      image: data.image,
+      email: data.email,
+      password: data.password
     };
   }
 }

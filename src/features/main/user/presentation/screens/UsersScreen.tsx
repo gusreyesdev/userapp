@@ -22,8 +22,7 @@ export const UsersScreen = () => {
   }
 
   return (
-    <div className="flex flex-row flex-wrap ">
-      
+    <div className="flex flex-col flex-wrap sm:flex-row ">
       {data?.map((user) => (
         <UserCard key={user.id} user={user} />
       ))}

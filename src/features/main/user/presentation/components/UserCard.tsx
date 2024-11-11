@@ -53,6 +53,12 @@ export const UserCard = ({ user }: Props) => {
       onClick={(e) => onDetails(user, e)}
       className="mb-2 sm:mb-0 mr-2 mt-2"
     >
+      <div className="justify-items-center">
+        <img className="max-h-36 sm:max-w-52  "
+          src={user.image}
+        />
+      </div>
+
       <CardHeader>
         <CardTitle> {user.name} </CardTitle>
       </CardHeader>
